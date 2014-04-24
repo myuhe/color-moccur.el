@@ -908,7 +908,7 @@ automatic display of the corresponding source code location."
 (define-key isearch-mode-map (kbd "M-o") 'isearch-moccur)
 (define-key isearch-mode-map (kbd "M-O") 'isearch-moccur-all)
 
-;;;; occur
+;;;###autoload
 (defun occur-by-moccur (regexp arg)
   "Use this instead of occur.
 Argument REGEXP regexp.
@@ -2217,6 +2217,7 @@ It serves as a menu to find any of the occurrences in this buffer.
         (setq plist list)))
     list))
 
+;;;###autoload
 (defun moccur-grep-find (dir inputs)
   (interactive
    (list (moccur-grep-read-directory)
@@ -2644,6 +2645,7 @@ It serves as a menu to find any of the occurrences in this buffer.
                        (concat regexp " .") " "))
     (setq moccur-last-command 'dired-do-moccur)))
 
+;;;###autoload
 (defun dired-do-moccur (regexp arg)
   "Show all lines of all buffers containing a match for REGEXP.
 The lines are shown in a buffer named *Moccur*.
@@ -3478,6 +3480,7 @@ line where it was found.
 
 ;;; grep-buffers
 ;;(require 'compile)
+;;;###autoload
 (defun grep-buffers ()
   "*Run `grep` PROGRAM to match EXPRESSION (with optional OPTIONS) \
 on all visited files."
@@ -3553,6 +3556,7 @@ on all visited files."
 (defvar search-buffers-regexp nil)
 (defvar search-buffers-regexp-for-moccur nil)
 
+;;;###autoload
 (defun search-buffers (regexp arg)
   "*Search string of all buffers."
   (interactive (list (search-buffers-regexp-read-from-minibuf)
