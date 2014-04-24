@@ -802,7 +802,6 @@ automatic display of the corresponding source code location."
   "Regexp for matching buffer heading line in moccur-grep-mode buffer.")
 (defvar moccur-line-number-regexp "^[ ]*\\([0-9]+\\) "
   "Regexp for matching line numbers in moccur buffer.")
-(defvar regexp nil)
 (defvar moccur-list nil)
 (defvar moccur-overlays nil)
 (make-variable-buffer-local 'moccur-overlays)
@@ -1421,7 +1420,7 @@ If NAME exists, `moccur-search-buffer' works as grep."
 
     (moccur-special-word-call-initialize-function)
 
-    (while (moccur-search-line regexp)
+    (while (moccur-search -line regexp)
       (when (moccur-special-word-call-check-function)
         (setq moccur-matches (+ moccur-matches 1))
         (let* ((linenum (count-lines
