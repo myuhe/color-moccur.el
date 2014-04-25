@@ -1420,7 +1420,7 @@ If NAME exists, `moccur-search-buffer' works as grep."
 
     (moccur-special-word-call-initialize-function)
 
-    (while (moccur-search -line regexp)
+    (while (moccur-search-line regexp)
       (when (moccur-special-word-call-check-function)
         (setq moccur-matches (+ moccur-matches 1))
         (let* ((linenum (count-lines
