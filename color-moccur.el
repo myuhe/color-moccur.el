@@ -2770,14 +2770,11 @@ It serves as a menu to find any of the occurrences in this buffer.
     (define-key map "<" 'moccur-file-beginning-of-buffer)
     (define-key map ">" 'moccur-file-end-of-buffer)
 
-    (condition-case nil
-        (progn
-          (require 'moccur-edit)
+    (unless (featurep 'moccur-edit)
+      (when (require 'moccur-edit nil t)
           (define-key map "r" 'moccur-edit-mode-in)
           (define-key map "\C-x\C-q" 'moccur-edit-mode-in)
-          (define-key map "\C-c\C-i" 'moccur-edit-mode-in))
-      (error
-       nil))
+          (define-key map "\C-c\C-i" 'moccur-edit-mode-in)))
     map))
 
 (if moccur-mode-map
