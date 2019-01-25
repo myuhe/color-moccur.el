@@ -860,8 +860,13 @@ automatic display of the corresponding source code location."
 (defvar moccur-grep-search-file-pos nil)
 
 ;;; For All Emacs
-(defmacro string> (a b) (list 'not (list 'or (list 'string= a b)
-                                         (list 'string< a b))))
+
+(if (version< emacs-version "25.1")
+    (defmacro string> (a b) 
+      (list 'not (list 'or (list 'string= a b)
+		       (list 'string< a b)))))
+
+
 (autoload 'migemo-get-pattern "migemo" "migemo-get-pattern" nil)
 
 ;;; For xemacs
